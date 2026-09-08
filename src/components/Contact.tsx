@@ -22,8 +22,10 @@ import {
   Map,
   ShieldCheck,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Radio
 } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface FormState {
   name: string;
@@ -48,6 +50,7 @@ const initialForm: FormState = {
 };
 
 export default function Contact() {
+  const { currentPortraitUrl } = useTheme();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
@@ -124,13 +127,23 @@ export default function Contact() {
           
           {/* Left Column: Contact info, Reassurance & Map */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
-            <div>
-              <h3 className="text-white text-xl font-bold tracking-tight">
-                Direct Contact Channels
-              </h3>
-              <p className="text-slate-400 text-xs mt-1">
-                You can reach out without hesitation. We respect your time and won't waste it with unnecessary services.
-              </p>
+            <div className="flex items-center space-x-3.5 pb-2 border-b border-slate-800/80">
+              <div className="w-12 h-12 rounded-2xl overflow-hidden border-2 border-cyan-400/80 shadow-lg shadow-cyan-500/20 bg-slate-900 shrink-0">
+                <img 
+                  src={currentPortraitUrl} 
+                  alt="Muhammad Fahad Waqas" 
+                  className="w-full h-full object-cover" 
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div>
+                <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
+                  Muhammad Fahad Waqas
+                </h3>
+                <p className="text-cyan-400 text-xs font-mono font-medium">
+                  Direct Response & Website Repair Channels
+                </p>
+              </div>
             </div>
 
             {/* Micro details grid */}
@@ -148,9 +161,14 @@ export default function Contact() {
               <div className="p-4 rounded-2xl bg-slate-900/40 border border-slate-800/80 hover:border-emerald-500/30 transition-all duration-300">
                 <Phone className="w-5 h-5 text-emerald-400 mb-2" />
                 <h4 className="text-slate-400 text-[11px] uppercase tracking-wider font-mono">Call / WhatsApp</h4>
-                <a href="https://wa.me/923000610586" target="_blank" rel="noopener noreferrer" className="text-white text-xs sm:text-sm font-semibold mt-0.5 block hover:text-emerald-400 transition-colors">
-                  03000610586
-                </a>
+                <div className="flex flex-col space-y-0.5 mt-0.5">
+                  <a href="https://wa.me/923000610586" target="_blank" rel="noopener noreferrer" className="text-white text-xs sm:text-sm font-semibold hover:text-emerald-400 transition-colors">
+                    0300 0610586
+                  </a>
+                  <a href="https://wa.me/92305762253" target="_blank" rel="noopener noreferrer" className="text-slate-300 text-xs font-semibold hover:text-emerald-400 transition-colors">
+                    0305 7562253
+                  </a>
+                </div>
               </div>
 
               {/* Location */}
@@ -423,13 +441,23 @@ export default function Contact() {
                   </button>
 
                   <a
+                    href="https://wa.me/923000610586?text=Hi%20Fahad,%20I%20want%20to%20join%20your%20WhatsApp%20Channel!"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-3 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 font-semibold text-xs hover:border-emerald-400 hover:text-white transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
+                  >
+                    <Radio className="w-4 h-4 text-emerald-400 animate-pulse" />
+                    <span>Join WhatsApp Channel</span>
+                  </a>
+
+                  <a
                     href="https://wa.me/923000610586"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 font-semibold text-xs hover:border-emerald-400 hover:text-white transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
+                    className="px-5 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 font-semibold text-xs hover:border-slate-500 hover:text-white transition-all duration-300 flex items-center justify-center space-x-2"
                   >
                     <MessageSquare className="w-4 h-4 text-emerald-400" />
-                    <span>WhatsApp Me (03000610586)</span>
+                    <span>WhatsApp Direct (03000610586)</span>
                   </a>
                 </div>
               </form>

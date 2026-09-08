@@ -28,8 +28,8 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import diagnosticsDeskImg from '../assets/images/web_error_diagnostics_desk_1788856966627.jpg';
-import alertBeaconImg from '../assets/images/error_alert_badge_1788856986853.jpg';
+import diagnosticsDeskImg from '../assets/images/web_diagnostics_desk_1788856966627.jpg';
+import alertBeaconImg from '../assets/images/system_alert_badge_1788856986853.jpg';
 
 interface ErrorLogItem {
   id: string;
@@ -99,7 +99,7 @@ const initialErrorLogs: ErrorLogItem[] = [
 ];
 
 export default function WebsiteErrorDiagnostics() {
-  const { theme } = useTheme();
+  const { theme, currentPortraitUrl } = useTheme();
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
@@ -431,6 +431,20 @@ export default function WebsiteErrorDiagnostics() {
                     <AlertTriangle className="w-4 h-4 text-amber-400" />
                     <span className="text-xs font-mono font-bold tracking-wide text-amber-300 uppercase">Is Your Site Down Right Now?</span>
                   </div>
+                  <div className="flex items-center space-x-3 py-1">
+                    <div className="w-10 h-10 rounded-xl overflow-hidden border border-amber-400/80 shadow-md bg-slate-900 shrink-0">
+                      <img 
+                        src={currentPortraitUrl} 
+                        alt="Muhammad Fahad Waqas" 
+                        className="w-full h-full object-cover" 
+                        referrerPolicy="no-referrer" 
+                      />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-white leading-tight">Muhammad Fahad Waqas</div>
+                      <div className="text-[10px] text-amber-300 font-mono">Lead Error Resolution Engineer</div>
+                    </div>
+                  </div>
                   <h4 className="text-lg font-bold text-white leading-snug">
                     Emergency Error Hotfix Service
                   </h4>
@@ -438,9 +452,9 @@ export default function WebsiteErrorDiagnostics() {
                     Don't lose sales or SEO ranking. Get your website errors diagnosed and patched with zero data loss.
                   </p>
                   <a
-                    href="https://wa.me/923284724773?text=Hi%20Fahad,%20my%20website%20has%20an%20urgent%20error/bug.%20Can%20you%20help%20fix%20it%20now?"
+                    href="https://wa.me/923000610586?text=Hi%20Fahad,%20my%20website%20has%20an%20urgent%20error/bug.%20Can%20you%20help%20fix%20it%20now?"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-red-500 to-amber-500 text-white text-xs font-bold flex items-center justify-center space-x-2 hover:brightness-110 shadow-lg shadow-red-600/30 transition-all cursor-pointer"
                   >
                     <span>Request Emergency Fix Now</span>
@@ -969,9 +983,9 @@ export default function WebsiteErrorDiagnostics() {
                   </div>
 
                   <a
-                    href={`https://wa.me/923284724773?text=Hi%20Fahad,%20I%20ran%20the%20audit%20for%20${encodeURIComponent(auditResult.url)}%20with%20error%20${auditResult.errorType}.%20Can%20we%20fix%20this%20now?`}
+                    href={`https://wa.me/923000610586?text=Hi%20Fahad,%20I%20ran%20the%20audit%20for%20${encodeURIComponent(auditResult.url)}%20with%20error%20${auditResult.errorType}.%20Can%20we%20fix%20this%20now?`}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold text-xs flex items-center justify-center space-x-2 hover:brightness-110 shadow-lg cursor-pointer"
                   >
                     <span>Hire Fahad to Fix This Website Error Now</span>

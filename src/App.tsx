@@ -12,6 +12,8 @@ import Hero from './components/Hero';
 import ClientFocusedServices from './components/ClientFocusedServices';
 import WebsiteErrorDiagnostics from './components/WebsiteErrorDiagnostics';
 import WebsiteImageSections from './components/WebsiteImageSections';
+import WebsiteAuditSuite from './components/WebsiteAuditSuite';
+import WhatsAppChannelFloating from './components/WhatsAppChannelFloating';
 import PortfolioShowcase from './components/PortfolioShowcase';
 import PricingPlans from './components/PricingPlans';
 import About from './components/About';
@@ -117,6 +119,9 @@ function AppContent() {
             {/* Dedicated Website Error Fixes & Live Website Image Gallery */}
             <WebsiteImageSections />
 
+            {/* Complete Website Error & Technical SEO Audit Suite */}
+            <WebsiteAuditSuite />
+
             {/* 8 Flagship Portfolio Projects & Interactive Case Studies */}
             <PortfolioShowcase />
 
@@ -177,6 +182,9 @@ function AppContent() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Floating Join WhatsApp Channel Widget */}
+      <WhatsAppChannelFloating />
     </div>
   );
 }

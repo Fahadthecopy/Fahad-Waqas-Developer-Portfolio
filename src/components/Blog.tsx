@@ -6,6 +6,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface BlogPost {
   title: string;
@@ -40,6 +41,7 @@ const blogPosts: BlogPost[] = [
 ];
 
 export default function Blog() {
+  const { currentPortraitUrl } = useTheme();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
@@ -102,12 +104,19 @@ export default function Blog() {
                 </p>
               </div>
 
-              {/* Action Button */}
+              {/* Action Button & Author */}
               <div className="border-t border-slate-800/60 pt-4 mt-6 flex items-center justify-between text-xs font-mono font-semibold text-slate-400 group-hover:text-white transition-colors">
-                <span className="flex items-center space-x-1">
-                  <BookOpen className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Content Strategy</span>
-                </span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 rounded-full overflow-hidden border border-cyan-400/60 shrink-0 bg-slate-900">
+                    <img 
+                      src={currentPortraitUrl} 
+                      alt="Muhammad Fahad Waqas" 
+                      className="w-full h-full object-cover" 
+                      referrerPolicy="no-referrer" 
+                    />
+                  </div>
+                  <span className="text-[11px] text-slate-300 font-sans font-medium">Fahad Waqas</span>
+                </div>
                 <span className="flex items-center space-x-1 text-cyan-400 group-hover:translate-x-1 transition-transform">
                   <span>Read Post</span>
                   <ArrowRight className="w-3.5 h-3.5" />

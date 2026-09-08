@@ -84,6 +84,12 @@ export default function BackgroundCustomizer({
 
   const portraitOptions: { id: PortraitStyle; name: string; desc: string; img: string }[] = [
     {
+      id: 'original_photo',
+      name: 'Original Photo (Default)',
+      desc: 'Authentic camera portrait applied across all pages & sections',
+      img: portraitOriginal
+    },
+    {
       id: 'studio_tech',
       name: 'Studio Tech Dark Bokeh',
       desc: 'Professional studio lighting with soft purple/cyan tech bokeh',
@@ -94,12 +100,6 @@ export default function BackgroundCustomizer({
       name: 'Modern Office Glass Studio',
       desc: 'Minimalist high-tech development studio with natural depth',
       img: portraitOffice
-    },
-    {
-      id: 'original_photo',
-      name: 'Original Natural Photo',
-      desc: 'Authentic high-resolution camera portrait of Fahad',
-      img: portraitOriginal
     }
   ];
 
@@ -254,7 +254,7 @@ export default function BackgroundCustomizer({
           onClick={() => {
             onThemeChange('dark');
             onBackgroundStyleChange('deep_space');
-            onPortraitStyleChange('studio_tech');
+            onPortraitStyleChange('original_photo');
           }}
           className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white text-xs flex items-center space-x-1.5 transition-colors cursor-pointer"
         >

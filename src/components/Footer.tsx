@@ -3,10 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Github, Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
-import profileImg from '../assets/images/fahad_portrait_1782637500099.jpg';
+import { Github, Linkedin, Facebook, Instagram, Mail, Phone, MapPin, Radio } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Footer() {
+  const { currentPortraitUrl } = useTheme();
+
   const handleScrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -23,7 +25,7 @@ export default function Footer() {
         <div className="lg:col-span-4 space-y-4">
           <div className="flex items-center space-x-2">
             <div className="w-9 h-9 rounded-full overflow-hidden border border-purple-500/50 shadow-md flex items-center justify-center bg-slate-900">
-              <img src={profileImg} alt="FW" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <img src={currentPortraitUrl} alt="Muhammad Fahad Waqas" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
             </div>
             <div>
               <span className="text-white font-bold tracking-tight text-base block leading-tight">Fahad Waqas</span>
@@ -31,20 +33,30 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-            I am a dedicated Full Stack Developer & Content Strategist with 3+ years of intense learning and 200+ personal projects. I engineer fast, reliable, and beautifully stylized digital solutions.
+            Muhammad Fahad Waqas – Full Stack Developer & Technical SEO Specialist with 4+ years of hands-on experience in PHP, MySQL, React, and zero-downtime website error resolution.
           </p>
-          <div className="flex space-x-3 pt-2">
-            <a href="https://github.com/Fahadthecopy" target="_blank" rel="noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors" title="GitHub (@Fahadthecopy)">
+          <div className="flex flex-wrap items-center gap-2 pt-2">
+            <a href="https://github.com/Fahadthecopy" target="_blank" rel="noopener noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors" title="GitHub (@Fahadthecopy)">
               <Github className="w-4 h-4" />
             </a>
-            <a href="https://linkedin.com/in/Fahad-Waqas" target="_blank" rel="noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-colors">
+            <a href="https://linkedin.com/in/Fahad-Waqas" target="_blank" rel="noopener noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-colors" title="LinkedIn">
               <Linkedin className="w-4 h-4" />
             </a>
-            <a href="https://facebook.com/Fahad-Waqas" target="_blank" rel="noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-blue-500 transition-colors">
+            <a href="https://facebook.com/Fahad-Waqas" target="_blank" rel="noopener noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-blue-500 transition-colors" title="Facebook">
               <Facebook className="w-4 h-4" />
             </a>
-            <a href="https://instagram.com/Fahad-Waqas" target="_blank" rel="noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-pink-500 transition-colors">
+            <a href="https://instagram.com/Fahad-Waqas" target="_blank" rel="noopener noreferrer" className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-pink-500 transition-colors" title="Instagram">
               <Instagram className="w-4 h-4" />
+            </a>
+            <a 
+              href="https://wa.me/923000610586?text=Hi%20Fahad,%20I%20want%20to%20join%20your%20WhatsApp%20Channel!" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-2.5 py-1.5 rounded bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-900/60 text-xs font-semibold flex items-center space-x-1.5 transition-colors" 
+              title="Join WhatsApp Channel (+92 300 0610586)"
+            >
+              <Radio className="w-3.5 h-3.5 animate-pulse" />
+              <span>WhatsApp Channel</span>
             </a>
           </div>
         </div>

@@ -9,7 +9,8 @@ import {
   Menu, 
   X, 
   ArrowRight,
-  LayoutDashboard
+  LayoutDashboard,
+  Radio
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -144,12 +145,24 @@ export default function Navbar({ onOpenDashboard }: NavbarProps) {
           </nav>
 
           {/* Right Action / CTA */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-2.5">
+            <a
+              href="https://wa.me/923000610586?text=Hi%20Fahad,%20I%20want%20to%20join%20your%20WhatsApp%20Channel%20for%20website%20tips%20and%20tech%20support!"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="nav-whatsapp-channel-btn"
+              className="hidden lg:inline-flex items-center space-x-1.5 text-xs font-semibold text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/40 px-3 py-2 rounded-xl transition-all cursor-pointer"
+              title="Join Fahad's WhatsApp Channel"
+            >
+              <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+              <span>WhatsApp Channel</span>
+            </a>
+
             {onOpenDashboard && (
               <button
                 onClick={onOpenDashboard}
                 id="nav-dashboard-btn"
-                className="hidden lg:flex items-center space-x-1.5 text-xs font-medium text-slate-300 hover:text-white px-3 py-2 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900/60 hover:bg-slate-850 transition-all cursor-pointer"
+                className="hidden xl:flex items-center space-x-1.5 text-xs font-medium text-slate-300 hover:text-white px-3 py-2 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900/60 hover:bg-slate-850 transition-all cursor-pointer"
                 title="Open Client Solution Engine"
               >
                 <LayoutDashboard className="w-3.5 h-3.5 text-cyan-400" />
@@ -160,7 +173,7 @@ export default function Navbar({ onOpenDashboard }: NavbarProps) {
             <button
               onClick={() => scrollToSection('contact')}
               id="nav-cta-btn"
-              className="inline-flex items-center space-x-1.5 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-4 py-2 rounded-xl shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center space-x-1.5 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-3.5 sm:px-4 py-2 rounded-xl shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
             >
               <span>Get in Touch</span>
               <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -215,6 +228,17 @@ export default function Navbar({ onOpenDashboard }: NavbarProps) {
 
             {/* Mobile Action Controls */}
             <div className="pt-3 mt-2 border-t border-slate-800/80 space-y-2">
+              <a
+                href="https://wa.me/923000610586?text=Hi%20Fahad,%20I%20want%20to%20join%20your%20WhatsApp%20Channel%20for%20website%20tips%20and%20tech%20support!"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 text-xs font-semibold text-emerald-400 hover:bg-emerald-500/20 cursor-pointer transition-colors"
+              >
+                <Radio className="w-4 h-4 text-emerald-400 animate-pulse" />
+                <span>Join WhatsApp Channel (+92 300 0610586)</span>
+              </a>
+
               {onOpenDashboard && (
                 <button
                   onClick={() => {

@@ -36,7 +36,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const [portraitStyle, setPortraitStyleState] = useState<PortraitStyle>(() => {
     const saved = localStorage.getItem('app_portrait_style');
-    return (saved as PortraitStyle) || 'studio_tech';
+    return (saved as PortraitStyle) || 'original_photo';
   });
 
   const [isBackgroundModalOpen, setIsBackgroundModalOpen] = useState<boolean>(false);

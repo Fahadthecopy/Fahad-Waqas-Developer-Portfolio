@@ -29,13 +29,13 @@ import {
 import { useTheme } from '../context/ThemeContext';
 
 // Import newly generated high-resolution assets
-import websiteErrorRepairImg from '../assets/images/website_error_repair_1788858126484.jpg';
+import websiteErrorRepairImg from '../assets/images/website_recovery_repair_1788858126484.jpg';
 import ecommerceCheckoutImg from '../assets/images/ecommerce_checkout_ui_1788858150032.jpg';
 import serverDbMonitorImg from '../assets/images/server_database_monitor_1788858173666.jpg';
 import responsiveWebsiteImg from '../assets/images/responsive_website_fix_1788858196702.jpg';
 import seoSpeedAuditImg from '../assets/images/seo_speed_audit_1788858215167.jpg';
-import diagnosticsDeskImg from '../assets/images/web_error_diagnostics_desk_1788856966627.jpg';
-import errorBeaconImg from '../assets/images/error_alert_badge_1788856986853.jpg';
+import diagnosticsDeskImg from '../assets/images/web_diagnostics_desk_1788856966627.jpg';
+import errorBeaconImg from '../assets/images/system_alert_badge_1788856986853.jpg';
 
 export interface ImageShowcaseItem {
   id: string;

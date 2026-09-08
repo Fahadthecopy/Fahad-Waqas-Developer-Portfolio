@@ -29,12 +29,12 @@ import {
 import { githubRepositories, GITHUB_PROFILE_URL, GITHUB_USERNAME } from '../data/githubRepos';
 
 // High-resolution visual screenshots & mockups
-import websiteErrorRepairImg from '../assets/images/website_error_repair_1788858126484.jpg';
+import websiteErrorRepairImg from '../assets/images/website_recovery_repair_1788858126484.jpg';
 import ecommerceCheckoutImg from '../assets/images/ecommerce_checkout_ui_1788858150032.jpg';
 import serverDbMonitorImg from '../assets/images/server_database_monitor_1788858173666.jpg';
 import responsiveWebsiteImg from '../assets/images/responsive_website_fix_1788858196702.jpg';
 import seoSpeedAuditImg from '../assets/images/seo_speed_audit_1788858215167.jpg';
-import diagnosticsDeskImg from '../assets/images/web_error_diagnostics_desk_1788856966627.jpg';
+import diagnosticsDeskImg from '../assets/images/web_diagnostics_desk_1788856966627.jpg';
 
 interface Project {
   id: string;
@@ -431,19 +431,31 @@ export default function PortfolioShowcase() {
                       <a 
                         href={project.githubUrl} 
                         target="_blank" 
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="p-1.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-400 hover:text-white transition-colors"
                         title="View Code on GitHub"
                       >
                         <Github className="w-3.5 h-3.5" />
                       </a>
-                      <a 
-                        href={project.demoUrl} 
-                        className="p-1.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-colors"
-                        title="Live Demo"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                      {project.demoUrl && project.demoUrl !== '#' ? (
+                        <a 
+                          href={project.demoUrl} 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-colors"
+                          title="Live Demo"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      ) : (
+                        <button
+                          onClick={() => setActiveModalProject(project)}
+                          className="p-1.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
+                          title="View Technical Case Study & Architecture"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </button>
+                      )}
                     </div>
                   </div>
 
@@ -859,7 +871,7 @@ export default function PortfolioShowcase() {
                 <a
                   href={activeModalProject.githubUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="py-3 px-5 rounded-xl bg-slate-800 text-slate-200 hover:text-white text-xs font-semibold transition-colors flex items-center justify-center space-x-2"
                 >
                   <Github className="w-4 h-4" />
