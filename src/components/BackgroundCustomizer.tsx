@@ -13,23 +13,21 @@ import {
   Laptop, 
   Layers, 
   Check, 
-  Image as ImageIcon, 
   Sliders, 
   Eye, 
   RefreshCw,
-  Zap
+  Zap,
+  ShieldCheck
 } from 'lucide-react';
 import portraitStudio from '../assets/images/fahad_studio_portrait_1787382529769.jpg';
-import portraitOffice from '../assets/images/fahad_portrait_office_1787382552263.jpg';
-import portraitOriginal from '../assets/images/fahad_portrait_1782637500099.jpg';
 
 interface BackgroundCustomizerProps {
   theme: ThemeMode;
   onThemeChange: (theme: ThemeMode) => void;
   backgroundStyle: BackgroundStyle;
   onBackgroundStyleChange: (style: BackgroundStyle) => void;
-  portraitStyle: PortraitStyle;
-  onPortraitStyleChange: (portrait: PortraitStyle) => void;
+  portraitStyle?: PortraitStyle;
+  onPortraitStyleChange?: (portrait: PortraitStyle) => void;
   onClose?: () => void;
 }
 
@@ -79,27 +77,6 @@ export default function BackgroundCustomizer({
       name: 'Studio Clean Minimalist',
       desc: 'Crisp, ultra-clean neutral slate aesthetic with soft shadows',
       preview: 'from-slate-100 via-white to-slate-200 text-slate-800'
-    }
-  ];
-
-  const portraitOptions: { id: PortraitStyle; name: string; desc: string; img: string }[] = [
-    {
-      id: 'original_photo',
-      name: 'Original Photo (Default)',
-      desc: 'Authentic camera portrait applied across all pages & sections',
-      img: portraitOriginal
-    },
-    {
-      id: 'studio_tech',
-      name: 'Studio Tech Dark Bokeh',
-      desc: 'Professional studio lighting with soft purple/cyan tech bokeh',
-      img: portraitStudio
-    },
-    {
-      id: 'office_bokeh',
-      name: 'Modern Office Glass Studio',
-      desc: 'Minimalist high-tech development studio with natural depth',
-      img: portraitOffice
     }
   ];
 
@@ -204,47 +181,24 @@ export default function BackgroundCustomizer({
         </div>
       </div>
 
-      {/* 3. Portrait Photo Background Switcher */}
-      <div>
-        <div className="flex items-center justify-between mb-3">
-          <label className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
-            3. Fahad Portrait Photo Background Changer
-          </label>
-          <span className="text-[10px] text-purple-400 font-mono">Instant Studio Switch</span>
+      {/* 3. Verified Developer Portrait */}
+      <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800 flex items-center space-x-3.5">
+        <div className="w-12 h-12 rounded-xl overflow-hidden border border-cyan-400/60 shadow-md shrink-0 bg-slate-950">
+          <img 
+            src={portraitStudio} 
+            alt="Muhammad Fahad Waqas" 
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {portraitOptions.map(p => {
-            const isSelected = portraitStyle === p.id;
-            return (
-              <button
-                key={p.id}
-                onClick={() => onPortraitStyleChange(p.id)}
-                className={`p-3 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
-                  isSelected
-                    ? 'border-cyan-400 bg-cyan-950/20 ring-1 ring-cyan-400/40 shadow-lg shadow-cyan-500/10'
-                    : 'border-slate-800 bg-slate-900/40 hover:border-slate-700'
-                }`}
-              >
-                <div className="relative mb-2.5 rounded-xl overflow-hidden aspect-[4/3] bg-slate-950">
-                  <img 
-                    src={p.img} 
-                    alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    referrerPolicy="no-referrer"
-                  />
-                  {isSelected && (
-                    <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center shadow-md">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                  )}
-                </div>
-
-                <div className="text-xs font-bold text-white truncate">{p.name}</div>
-                <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">{p.desc}</div>
-              </button>
-            );
-          })}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center space-x-1.5">
+            <span className="text-xs font-bold text-white">Muhammad Fahad Waqas</span>
+            <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+          </div>
+          <p className="text-[11px] text-slate-400">
+            Approved portfolio portrait applied consistently across all sections.
+          </p>
         </div>
       </div>
 
@@ -254,7 +208,6 @@ export default function BackgroundCustomizer({
           onClick={() => {
             onThemeChange('dark');
             onBackgroundStyleChange('deep_space');
-            onPortraitStyleChange('original_photo');
           }}
           className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white text-xs flex items-center space-x-1.5 transition-colors cursor-pointer"
         >

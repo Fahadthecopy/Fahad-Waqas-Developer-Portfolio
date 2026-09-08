@@ -11,7 +11,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ClientFocusedServices from './components/ClientFocusedServices';
 import WebsiteErrorDiagnostics from './components/WebsiteErrorDiagnostics';
-import WebsiteImageSections from './components/WebsiteImageSections';
 import WebsiteAuditSuite from './components/WebsiteAuditSuite';
 import WhatsAppChannelFloating from './components/WhatsAppChannelFloating';
 import PortfolioShowcase from './components/PortfolioShowcase';
@@ -115,9 +114,6 @@ function AppContent() {
 
             {/* Apex Web Diagnostics & Instant Website Error Fixing Section */}
             <WebsiteErrorDiagnostics />
-
-            {/* Dedicated Website Error Fixes & Live Website Image Gallery */}
-            <WebsiteImageSections />
 
             {/* Complete Website Error & Technical SEO Audit Suite */}
             <WebsiteAuditSuite />

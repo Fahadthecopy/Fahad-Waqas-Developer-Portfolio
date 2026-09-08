@@ -25,11 +25,12 @@ import {
   Globe,
   Bell,
   Sparkles,
-  HelpCircle
+  HelpCircle,
+  Play,
+  Pause,
+  Server
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import diagnosticsDeskImg from '../assets/images/web_diagnostics_desk_1788856966627.jpg';
-import alertBeaconImg from '../assets/images/system_alert_badge_1788856986853.jpg';
 
 interface ErrorLogItem {
   id: string;
@@ -321,27 +322,63 @@ export default function WebsiteErrorDiagnostics() {
                     </button>
                   </div>
 
-                  {/* Image Display with Interactive Hotspot Overlays */}
-                  <div className="relative rounded-2xl overflow-hidden border border-slate-800 group aspect-video bg-black flex items-center justify-center">
-                    <img 
-                      src={diagnosticsDeskImg} 
-                      alt="APEX Web Diagnostics High-Res Developer Workstation"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                  {/* Interactive Live Telemetry Console */}
+                  <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 flex flex-col font-mono text-xs">
+                    {/* Console Header Bar */}
+                    <div className="px-4 py-2.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <div className="flex space-x-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                        </div>
+                        <span className="text-[11px] text-slate-400 font-mono ml-2">apex-telemetry-cluster://node-01.live</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-[11px] text-emerald-400">INGESTING PACKETS</span>
+                      </div>
+                    </div>
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent pointer-events-none" />
+                    {/* Live Terminal Log Stream */}
+                    <div className="p-4 space-y-2 bg-slate-950/95 font-mono text-[11px] leading-relaxed max-h-60 overflow-y-auto">
+                      <div className="flex items-start space-x-2">
+                        <span className="text-slate-500">[08:42:15]</span>
+                        <span className="text-cyan-400">INFO:</span>
+                        <span className="text-slate-300">Heartbeat check on root load-balancer — 200 OK (38ms)</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-slate-500">[08:42:18]</span>
+                        <span className="text-amber-400">WARN:</span>
+                        <span className="text-slate-300">Memory usage hit 84% on cache daemon /var/run/redis.sock</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-slate-500">[08:42:20]</span>
+                        <span className="text-red-400">ERROR:</span>
+                        <span className="text-slate-200">HTTP 500 Internal Server Error trapped at /checkout/api/v1 — Database pool deadlock resolved via auto-failover</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-slate-500">[08:42:22]</span>
+                        <span className="text-emerald-400">RESOLVE:</span>
+                        <span className="text-slate-300">Subprocess re-allocated, 404 URL redirected via 301 SEO mapping table</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-slate-500">[08:42:25]</span>
+                        <span className="text-purple-400">AUDIT:</span>
+                        <span className="text-slate-300">Core Web Vitals LCP 1.1s, CLS 0.01 — W3C compliance 100%</span>
+                      </div>
+                    </div>
 
                     {/* Bottom overlay status */}
-                    <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800/90 backdrop-blur-md flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                    <div className="p-3 bg-slate-900/60 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
                       <div className="flex items-center space-x-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping inline-block" />
-                        <span className="text-slate-300">57 Critical HTTP Codes Detected</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
+                        <span className="text-slate-300">Telemetry Health: Operational</span>
                       </div>
                       <div className="flex items-center space-x-3 text-[11px]">
-                        <span className="text-amber-400">CPU 92%</span>
+                        <span className="text-amber-400">CPU: 32% (Stable)</span>
                         <span className="text-slate-600">•</span>
-                        <span className="text-cyan-400">Latency Spike 4.5s</span>
+                        <span className="text-cyan-400">Latency: 42ms</span>
                         <span className="text-slate-600">•</span>
                         <button
                           onClick={() => setActiveTab('simulator')}
@@ -379,9 +416,9 @@ export default function WebsiteErrorDiagnostics() {
                 </div>
               </div>
 
-              {/* Secondary Alert Beacon & 24/7 Incident Dispatch */}
+              {/* Secondary 24/7 Incident Dispatch Monitor */}
               <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
-                {/* Neon Error Alert Badge Card */}
+                {/* Real-Time Error Alert Dispatch Card */}
                 <div className={`p-6 rounded-3xl border relative overflow-hidden backdrop-blur-md ${
                   theme === 'light'
                     ? 'bg-white border-slate-200 shadow-xl'
@@ -390,26 +427,22 @@ export default function WebsiteErrorDiagnostics() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-[11px] font-mono">
                       <Radio className="w-3 h-3 text-cyan-400 animate-pulse" />
-                      <span>Instant Alert Beacon</span>
+                      <span>Instant Alert Dispatch</span>
                     </div>
 
-                    <button
-                      onClick={() => setSelectedImageModal(alertBeaconImg)}
-                      className="text-slate-400 hover:text-white"
-                      title="Inspect Beacon Asset"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                    </button>
+                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                      ON-CALL ACTIVE
+                    </span>
                   </div>
 
-                  <div className="relative rounded-2xl overflow-hidden aspect-square bg-slate-950 border border-slate-800 flex items-center justify-center group mb-4">
-                    <img 
-                      src={alertBeaconImg} 
-                      alt="Neon Website Error Alert Beacon Icon"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-cyan-500/10 mix-blend-overlay pointer-events-none" />
+                  {/* Interactive Status Radar Display */}
+                  <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col items-center justify-center text-center mb-4 relative overflow-hidden">
+                    <div className="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-3 relative">
+                      <div className="absolute inset-0 rounded-full border border-cyan-400/40 animate-ping opacity-30" />
+                      <Server className="w-7 h-7 text-cyan-400" />
+                    </div>
+                    <div className="text-sm font-bold text-white font-mono">24/7 WEBHOOK LISTENER</div>
+                    <p className="text-[11px] text-slate-400 mt-1">Listening on SSL port 443 with encrypted payload signature verification</p>
                   </div>
 
                   <h4 className={`text-base font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>

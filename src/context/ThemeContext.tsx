@@ -6,8 +6,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BackgroundStyle, PortraitStyle, ThemeMode } from '../types';
 import portraitStudio from '../assets/images/fahad_studio_portrait_1787382529769.jpg';
-import portraitOffice from '../assets/images/fahad_portrait_office_1787382552263.jpg';
-import portraitOriginal from '../assets/images/fahad_portrait_1782637500099.jpg';
 
 interface ThemeContextType {
   theme: ThemeMode;
@@ -34,11 +32,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return (saved as BackgroundStyle) || 'deep_space';
   });
 
-  const [portraitStyle, setPortraitStyleState] = useState<PortraitStyle>(() => {
-    const saved = localStorage.getItem('app_portrait_style');
-    return (saved as PortraitStyle) || 'original_photo';
-  });
-
+  const [portraitStyle, setPortraitStyleState] = useState<PortraitStyle>('studio_tech');
   const [isBackgroundModalOpen, setIsBackgroundModalOpen] = useState<boolean>(false);
 
   const setTheme = (t: ThemeMode) => {
@@ -60,7 +54,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setPortraitStyle = (style: PortraitStyle) => {
     setPortraitStyleState(style);
-    localStorage.setItem('app_portrait_style', style);
   };
 
   useEffect(() => {
@@ -73,10 +66,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [theme]);
 
-  const currentPortraitUrl = 
-    portraitStyle === 'studio_tech' ? portraitStudio :
-    portraitStyle === 'office_bokeh' ? portraitOffice :
-    portraitOriginal;
+  // Approved portrait of Muhammad Fahad Waqas sitting in front of the folding/background setup
+  const currentPortraitUrl = portraitStudio;
 
   return (
     <ThemeContext.Provider
